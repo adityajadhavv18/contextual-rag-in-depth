@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+qdrant_storage/
+# fetched data: commit the scripts and the manifest (pinned revisions), not the downloads
+data/*/raw/
+data/*/text/
+data/*/cache/
+data/*/cricsheet/
