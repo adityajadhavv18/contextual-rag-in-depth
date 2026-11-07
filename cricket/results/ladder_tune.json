@@ -1,0 +1,829 @@
+{
+  "r0": {
+    "rung": "r0",
+    "label": "dense only",
+    "questions": 28,
+    "recall5": 0.339,
+    "mrr": 0.195,
+    "ndcg5": 0.22,
+    "recall20": 0.5,
+    "latency_p50_ms": 12.0,
+    "latency_p95_ms": 18.4,
+    "stage_p50_ms": {
+      "dense": 12.0
+    },
+    "cost_per_query_usd": 0.0,
+    "by_category": {
+      "bio": {
+        "recall5": 1.0,
+        "mrr": 0.4,
+        "n": 3
+      },
+      "multi": {
+        "recall5": 0.375,
+        "mrr": 0.188,
+        "n": 4
+      },
+      "num": {
+        "recall5": 0.4,
+        "mrr": 0.25,
+        "n": 5
+      },
+      "pron": {
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "n": 5
+      },
+      "twin": {
+        "recall5": 0.4,
+        "mrr": 0.25,
+        "n": 5
+      },
+      "which": {
+        "recall5": 0.167,
+        "mrr": 0.167,
+        "n": 6
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-05",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "which-06",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-02",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "twin-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 14
+      },
+      {
+        "id": "twin-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-05",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "pron-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 18
+      },
+      {
+        "id": "pron-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "num-01",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "num-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "num-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 8
+      },
+      {
+        "id": "num-04",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "num-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 7
+      },
+      {
+        "id": "multi-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.5,
+        "rank20": 7
+      },
+      {
+        "id": "multi-02",
+        "recall5": 0.5,
+        "mrr": 0.5,
+        "ndcg5": 0.38685280723454163,
+        "recall20": 0.5,
+        "rank20": 2
+      },
+      {
+        "id": "multi-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "multi-04",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.2640681225725909,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "bio-01",
+        "recall5": 1.0,
+        "mrr": 0.2,
+        "ndcg5": 0.38685280723454163,
+        "recall20": 1.0,
+        "rank20": 5
+      },
+      {
+        "id": "bio-02",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      },
+      {
+        "id": "bio-03",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      }
+    ]
+  },
+  "r1": {
+    "rung": "r1",
+    "label": "Hybrid #1 best stack (+ HyDE on dense)",
+    "questions": 28,
+    "recall5": 0.446,
+    "mrr": 0.275,
+    "ndcg5": 0.302,
+    "recall20": 0.589,
+    "latency_p50_ms": 3357.7,
+    "latency_p95_ms": 4769.1,
+    "stage_p50_ms": {
+      "hyde_embed": 49.7,
+      "dense": 13.1,
+      "bm25": 6.3,
+      "splade": 60.5,
+      "fuse": 0.1,
+      "llm": 3171.1
+    },
+    "cost_per_query_usd": 8.929999999999999e-05,
+    "by_category": {
+      "bio": {
+        "recall5": 1.0,
+        "mrr": 0.583,
+        "n": 3
+      },
+      "multi": {
+        "recall5": 0.375,
+        "mrr": 0.3,
+        "n": 4
+      },
+      "num": {
+        "recall5": 0.8,
+        "mrr": 0.55,
+        "n": 5
+      },
+      "pron": {
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "n": 5
+      },
+      "twin": {
+        "recall5": 0.4,
+        "mrr": 0.15,
+        "n": 5
+      },
+      "which": {
+        "recall5": 0.333,
+        "mrr": 0.208,
+        "n": 6
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 18
+      },
+      {
+        "id": "which-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-05",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "which-06",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "twin-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-02",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      },
+      {
+        "id": "twin-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-05",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "pron-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 6
+      },
+      {
+        "id": "pron-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "num-01",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "num-02",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "num-03",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      },
+      {
+        "id": "num-04",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "num-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 13
+      },
+      {
+        "id": "multi-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "multi-02",
+        "recall5": 0.5,
+        "mrr": 1.0,
+        "ndcg5": 0.6131471927654584,
+        "recall20": 0.5,
+        "rank20": 1
+      },
+      {
+        "id": "multi-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 10
+      },
+      {
+        "id": "multi-04",
+        "recall5": 1.0,
+        "mrr": 0.2,
+        "ndcg5": 0.23719771276929622,
+        "recall20": 1.0,
+        "rank20": 5
+      },
+      {
+        "id": "bio-01",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "bio-02",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "bio-03",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      }
+    ]
+  },
+  "r1a": {
+    "rung": "r1a",
+    "label": "Hybrid #1 stack without HyDE",
+    "questions": 28,
+    "recall5": 0.411,
+    "mrr": 0.241,
+    "ndcg5": 0.268,
+    "recall20": 0.589,
+    "latency_p50_ms": 63.8,
+    "latency_p95_ms": 115.9,
+    "stage_p50_ms": {
+      "dense": 15.6,
+      "bm25": 3.8,
+      "splade": 41.0,
+      "fuse": 0.1
+    },
+    "cost_per_query_usd": 0.0,
+    "by_category": {
+      "bio": {
+        "recall5": 1.0,
+        "mrr": 0.417,
+        "n": 3
+      },
+      "multi": {
+        "recall5": 0.375,
+        "mrr": 0.312,
+        "n": 4
+      },
+      "num": {
+        "recall5": 0.8,
+        "mrr": 0.533,
+        "n": 5
+      },
+      "pron": {
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "n": 5
+      },
+      "twin": {
+        "recall5": 0.4,
+        "mrr": 0.117,
+        "n": 5
+      },
+      "which": {
+        "recall5": 0.167,
+        "mrr": 0.167,
+        "n": 6
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 18
+      },
+      {
+        "id": "which-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "which-05",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "which-06",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 6
+      },
+      {
+        "id": "twin-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-02",
+        "recall5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ndcg5": 0.5,
+        "recall20": 1.0,
+        "rank20": 3
+      },
+      {
+        "id": "twin-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "twin-05",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "pron-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-02",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 7
+      },
+      {
+        "id": "pron-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-04",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "pron-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "num-01",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "num-02",
+        "recall5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ndcg5": 0.5,
+        "recall20": 1.0,
+        "rank20": 3
+      },
+      {
+        "id": "num-03",
+        "recall5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ndcg5": 0.5,
+        "recall20": 1.0,
+        "rank20": 3
+      },
+      {
+        "id": "num-04",
+        "recall5": 1.0,
+        "mrr": 1.0,
+        "ndcg5": 1.0,
+        "recall20": 1.0,
+        "rank20": 1
+      },
+      {
+        "id": "num-05",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 16
+      },
+      {
+        "id": "multi-01",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 0.0,
+        "rank20": null
+      },
+      {
+        "id": "multi-02",
+        "recall5": 0.5,
+        "mrr": 1.0,
+        "ndcg5": 0.6131471927654584,
+        "recall20": 0.5,
+        "rank20": 1
+      },
+      {
+        "id": "multi-03",
+        "recall5": 0.0,
+        "mrr": 0.0,
+        "ndcg5": 0.0,
+        "recall20": 1.0,
+        "rank20": 18
+      },
+      {
+        "id": "multi-04",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.2640681225725909,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "bio-01",
+        "recall5": 1.0,
+        "mrr": 0.25,
+        "ndcg5": 0.43067655807339306,
+        "recall20": 1.0,
+        "rank20": 4
+      },
+      {
+        "id": "bio-02",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      },
+      {
+        "id": "bio-03",
+        "recall5": 1.0,
+        "mrr": 0.5,
+        "ndcg5": 0.6309297535714575,
+        "recall20": 1.0,
+        "rank20": 2
+      }
+    ]
+  }
+}
