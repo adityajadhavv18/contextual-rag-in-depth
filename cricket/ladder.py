@@ -35,11 +35,12 @@ RRF_K = 20  # Hybrid #1's tuned fusion (fusion_sweep.py there), carried over unc
 KEYWORD_WEIGHTS = {"bm25": 1.5, "splade": 1.5}  # keyword lists count 1.5x the dense list
 
 
-def hybrid_stack(q: str, k: int, collection: str = PLAIN, use_hyde: bool = True) -> list:
+def hybrid_stack(q: str, k: int, collection: str = PLAIN, use_hyde: bool = True, dense_collection: str = "") -> list:
     """Hybrid #1's best stack (r6a there): dense + BM25 + SPLADE, weighted RRF (k=20, keyword x1.5), and the dense
-    list searching with a HyDE fake passage. The keyword lists always search with the question itself."""
+    list searching with a HyDE fake passage. The keyword lists always search with the question itself.
+    dense_collection: let the dense list search another collection of the same chunks (r3b)."""
     vector = hyde.hyde_vector(q) if use_hyde else None
-    return rrf_fuse({"dense": dense_search(q, CANDIDATES, collection, vector=vector),
+    return rrf_fuse({"dense": dense_search(q, CANDIDATES, dense_collection or collection, vector=vector),
                      "bm25": sparse_search(q, CANDIDATES, BM25, collection),
                      "splade": sparse_search(q, CANDIDATES, SPLADE, collection)},
                     k=RRF_K, weights=KEYWORD_WEIGHTS)[:k]
@@ -52,6 +53,10 @@ RUNGS = {
     # r2: the r1 stack over the same chunks with a FREE label (built by code) in the index text
     "r2a": ("r1 + title and heading path", lambda q, k: hybrid_stack(q, k, collection("header"))),
     "r2b": ("r2a + the match box (date, teams, venue)", lambda q, k: hybrid_stack(q, k, collection("header_match"))),
+    # r3: r2b plus an LLM note on what happens in the chunk (notes.py), in all three lists or the dense list only
+    "r3a": ("r2b + LLM note (section mode)", lambda q, k: hybrid_stack(q, k, collection("header_match_note"))),
+    "r3b": ("r2b, LLM note in dense only", lambda q, k: hybrid_stack(
+        q, k, collection("header_match"), dense_collection=collection("header_match_note"))),
 }
 
 

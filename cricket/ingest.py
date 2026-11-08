@@ -14,6 +14,7 @@ chunks and differ only in their labels, and any difference in scores comes from 
   header_match   r2a's label plus the match box the chunk belongs to (r2b)
                    "17–21 December 2020 (D/N) | India v Australia | Adelaide Oval, Adelaide"
                  Both labels are built by code from the article's own structure (chunks.py): no LLM, no API.
+  header_match_note  r2b's label plus an LLM note on what happens in the chunk (notes.py, section mode) (r3)
 
 Batches are small (8) and points upload from a generator because this runs on an 8 GB laptop. Model outputs are
 cached by text hash (data/cricket/cache/), so a variant only embeds index texts it hasn't seen before.
@@ -29,6 +30,7 @@ import statistics
 import sys
 import time
 import uuid
+from functools import cache
 
 from fastembed import SparseTextEmbedding, TextEmbedding
 from fastembed.common.utils import remove_non_alphanumeric
@@ -42,10 +44,18 @@ SPLADE_MODEL = "prithivida/Splade_PP_en_v1"
 DENSE, BM25, SPLADE = "dense", "bm25", "splade"
 CACHE = DATA / "cache"
 
+@cache
+def section_notes() -> dict:
+    from notes import load_notes  # notes.py imports this module, so import it only when a variant needs it
+    return load_notes("section")
+
+
 VARIANTS = {  # name -> the index text of a chunk
     "plain": lambda c: c.text,
     "header": lambda c: f"{' › '.join(c.path)}\n{c.text}",
     "header_match": lambda c: "\n".join([" › ".join(c.path), *c.match, c.text]),
+    "header_match_note": lambda c: "\n".join([" › ".join(c.path), *c.match, section_notes()[c.chunk_id]["note"],
+                                              c.text]),
 }
 
 
