@@ -18,13 +18,17 @@ import re
 import statistics
 import sys
 from collections import defaultdict
+from functools import cache
 from pathlib import Path
 
 from eval_harness import PipelineOutput, evaluate, load_golden
+from eval_harness.metrics import _evidence_parts
 
 import hyde
-from ingest import BM25, SPLADE, collection
-from retrieve import PLAIN, STAGE_MS, dense_search, rrf_fuse, sparse_search
+from chunks import load_chunks
+from ingest import BM25, SPLADE, VARIANTS, collection
+from llm_rerank import llm_rerank
+from retrieve import PLAIN, STAGE_MS, dense_search, rerank, rrf_fuse, sparse_search
 
 TUNE = "golden_cricket_tune_v1.jsonl"
 TOP_K = 5  # chunks the LLM will read
@@ -35,15 +39,20 @@ RRF_K = 20  # Hybrid #1's tuned fusion (fusion_sweep.py there), carried over unc
 KEYWORD_WEIGHTS = {"bm25": 1.5, "splade": 1.5}  # keyword lists count 1.5x the dense list
 
 
-def hybrid_stack(q: str, k: int, collection: str = PLAIN, use_hyde: bool = True, dense_collection: str = "") -> list:
+def hybrid_stack(q: str, k: int, collection: str = PLAIN, use_hyde: bool = True, dense_collection: str = "",
+                 question_dense: bool = False) -> list:
     """Hybrid #1's best stack (r6a there): dense + BM25 + SPLADE, weighted RRF (k=20, keyword x1.5), and the dense
     list searching with a HyDE fake passage. The keyword lists always search with the question itself.
-    dense_collection: let the dense list search another collection of the same chunks (r3b)."""
+    dense_collection: let the dense list search another collection of the same chunks (r3b).
+    question_dense: add a second dense list searching with the question itself (r4j/k), a safety net for when the
+    HyDE passage invents wrong facts (2017 IPL final: "Bumrah bowled the last over" sank the Johnson chunk to #164)."""
     vector = hyde.hyde_vector(q) if use_hyde else None
-    return rrf_fuse({"dense": dense_search(q, CANDIDATES, dense_collection or collection, vector=vector),
-                     "bm25": sparse_search(q, CANDIDATES, BM25, collection),
-                     "splade": sparse_search(q, CANDIDATES, SPLADE, collection)},
-                    k=RRF_K, weights=KEYWORD_WEIGHTS)[:k]
+    lists = {"dense": dense_search(q, CANDIDATES, dense_collection or collection, vector=vector),
+             "bm25": sparse_search(q, CANDIDATES, BM25, collection),
+             "splade": sparse_search(q, CANDIDATES, SPLADE, collection)}
+    if question_dense:
+        lists["dense_question"] = dense_search(q, CANDIDATES, dense_collection or collection)
+    return rrf_fuse(lists, k=RRF_K, weights=KEYWORD_WEIGHTS)[:k]
 
 
 RUNGS = {
@@ -59,28 +68,82 @@ RUNGS = {
         q, k, collection("header_match"), dense_collection=collection("header_match_note"))),
 }
 
+# r4: a fused top 20 re-sorted by a cross-encoder (no RRF after it: the reranker's order is final). It reads each chunk
+# under its r2b label, so it knows which match a chunk is about; on r3a's shortlist it also reads the note.
+RERANK_POOL = 20  # r2b has recall@20 = 0.96
+RERANKERS = {"a": "Xenova/ms-marco-MiniLM-L-6-v2", "b": "jinaai/jina-reranker-v1-turbo-en",
+             "c": "BAAI/bge-reranker-base"}  # fastest to best in Hybrid #1
+
+
+@cache
+def _chunks_by_id() -> dict:
+    return {c.chunk_id: c for c in load_chunks()}
+
+
+def labelled(h) -> str:
+    return VARIANTS["header_match"](_chunks_by_id()[h.chunk_id])
+
+
+def labelled_note(h) -> str:
+    return VARIANTS["header_match_note"](_chunks_by_id()[h.chunk_id])
+
+
+for key, model in RERANKERS.items():
+    RUNGS[f"r4{key}"] = (f"r2b + rerank top {RERANK_POOL}: {model.split('/')[1]}", lambda q, k, m=model: rerank(
+        q, hybrid_stack(q, RERANK_POOL, collection("header_match")), m, labelled)[:k])
+
+
+def rerank_blend(q: str, k: int, rerank_weight: float) -> list:
+    """r4e/f: RRF the reranker's order WITH the fused order it re-sorted. Every cross-encoder buried scorecard lines
+    ("Josh Hazlewood 5/8 (5 overs)": a table row, not prose) that the keyword lists had near the top; here a chunk
+    the fused list ranks high can't fall far, while prose answers jina lifts still rise."""
+    fused = hybrid_stack(q, RERANK_POOL, collection("header_match"))
+    return rrf_fuse({"rerank": rerank(q, fused, RERANKERS["b"], labelled), "fused": fused}, k=RRF_K,
+                    weights={"rerank": rerank_weight})[:k]
+
+
+RUNGS["r4e"] = ("r4b, jina order RRF'd with the fused order (1:1)", lambda q, k: rerank_blend(q, k, 1.0))
+RUNGS["r4f"] = ("r4b, jina order RRF'd with the fused order (jina x2)", lambda q, k: rerank_blend(q, k, 2.0))
+
+
+# r4h: an LLM reads the same top 20. A deeper pool doesn't help: with 40 per list the one answer outside the top 20
+# (2017 IPL final, last over) only reaches fused #42, behind ~40 chunks of the same final and season naming both teams.
+RUNGS["r4h"] = (f"r2b + LLM rerank of the top {RERANK_POOL} (gpt-4o-mini, listwise)", lambda q, k: llm_rerank(
+    q, hybrid_stack(q, RERANK_POOL, collection("header_match")), labelled)[:k])
+RUNGS["r4j"] = ("r4h on the note index, dense with HyDE AND the question", lambda q, k: llm_rerank(
+    q, hybrid_stack(q, RERANK_POOL, collection("header_match_note"), question_dense=True), labelled)[:k])
+RUNGS["r4k"] = ("r4h, dense with HyDE AND the question (no notes)", lambda q, k: llm_rerank(
+    q, hybrid_stack(q, RERANK_POOL, collection("header_match"), question_dense=True), labelled)[:k])
+RUNGS["r4d"] = (f"r3a + rerank top {RERANK_POOL}: bge-reranker-base (reads the note)", lambda q, k: rerank(
+    q, hybrid_stack(q, RERANK_POOL, collection("header_match_note")), RERANKERS["c"], labelled_note)[:k])
+
 
 def norm(text: str) -> str:  # the harness's matching rule
     return re.sub(r"\s+", " ", text).strip().lower()
 
 
-def fragments(item) -> list[str]:
-    return [norm(f) for f in re.split(r" \.\.\. | / ", item.evidence or "") if f.strip()]
+def fragments(item) -> list[list[str]]:
+    """The evidence parts, each a list of wordings any one of which counts (the harness's rule, metrics.py)."""
+    return _evidence_parts(item)
 
 
-def first_rank(frags: list[str], texts: list[str]) -> int | None:
-    return next((i for i, t in enumerate(texts, start=1) if any(f in norm(t) for f in frags)), None)
+def holds(part: list[str], text: str) -> bool:
+    return any(a in norm(text) for a in part)
 
 
-def ndcg(frags: list[str], texts: list[str], k: int = TOP_K) -> float:
-    """A chunk scores if it holds an evidence fragment no higher chunk already supplied."""
+def first_rank(parts: list[list[str]], texts: list[str]) -> int | None:
+    return next((i for i, t in enumerate(texts, start=1) if any(holds(p, t) for p in parts)), None)
+
+
+def ndcg(parts: list[list[str]], texts: list[str], k: int = TOP_K) -> float:
+    """A chunk scores if it holds an evidence part no higher chunk already supplied."""
     found, dcg = set(), 0.0
     for i, t in enumerate(texts[:k], start=1):
-        new = {f for f in frags if f in norm(t)} - found
+        new = {n for n, p in enumerate(parts) if holds(p, t)} - found
         if new:
             dcg += 1 / math.log2(i + 1)
             found |= new
-    ideal = sum(1 / math.log2(i + 1) for i in range(1, min(len(frags), k) + 1))
+    ideal = sum(1 / math.log2(i + 1) for i in range(1, min(len(parts), k) + 1))
     return dcg / ideal
 
 
@@ -111,7 +174,7 @@ def run_rung(key: str) -> dict:
         deep = [h.text for h in search(g.question, CANDIDATES)]  # outside the timed run
         row = {"id": g.id, "recall5": q.scores["evidence_recall"], "mrr": q.scores["evidence_mrr"],
                "ndcg5": ndcg(frags, q.output.contexts),
-               "recall20": sum(any(f in norm(t) for t in deep) for f in frags) / len(frags),
+               "recall20": sum(any(holds(p, t) for t in deep) for p in frags) / len(frags),
                "rank20": first_rank(frags, deep)}
         rows.append(row)
         by_cat[g.id.split("-")[0]].append(row)

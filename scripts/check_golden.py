@@ -10,6 +10,8 @@ each evidence fragment
 Scorecard fragments ("Ben Stokes 135* (219)", "Josh Hazlewood 5/8 (5 overs)", "India: 36 (21.2 overs)") are also
 looked up in Cricsheet: the match is found from the Match: line of the fragment's section, and the batter's
 runs/balls, bowler's wickets/runs/overs or team's total must agree. A match Cricsheet lacks is reported, not failed.
+A part may add other wordings of the same fact after " || " (another passage giving the same answer); those must be
+verbatim inside one section of some included doc, may appear more than once, and get the same Cricsheet check.
 Prints the mix by category (the id prefix), question type and doc.
 """
 
@@ -77,7 +79,19 @@ def main() -> None:
         print("  by type:    ", dict(Counter(g.question_type for g in golden)))
         print("  by doc:     ", len({g.source_doc for g in golden if g.source_doc}), "articles")
         for g in golden:
-            for frag in (f for f in re.split(r" \.\.\. | / ", g.evidence or "") if f.strip()):
+            for part in (p for p in re.split(r" \.\.\. | / ", g.evidence or "") if p.strip()):
+                frag, *alts = part.split(" || ")
+                for alt in alts:  # other wordings of the same fact: verbatim in one section of any doc (may repeat)
+                    a = norm(alt)
+                    homes = [(doc, s) for doc, ss in secs.items() for s, n in ss if a in n]
+                    if not homes:
+                        print(f"  ❌ {g.id}: alternative not found whole in any section: {alt[:70]!r}")
+                        problems += 1
+                        continue
+                    verdict = cricsheet_check(alt.strip(), homes[0][1], homes[0][0])
+                    print(f"  {g.id}: alt {alt.strip()[:60]!r} in {sorted({d for d, _ in homes})}"
+                          + (f" → {verdict}" if verdict else ""))
+                    problems += bool(verdict and verdict.startswith("❌"))
                 f = norm(frag)
                 hits = {doc: text.count(f) for doc, text in corpus.items() if f in text}
                 if g.source_doc not in hits:

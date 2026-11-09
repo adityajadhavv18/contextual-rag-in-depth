@@ -4,6 +4,7 @@
   sparse_search    question -> sparse vector  -> chunks sharing weighted words   (the "keyword" librarian)
                    BM25 or SPLADE depending on `using`
   rrf_fuse         merge ranked lists by Reciprocal Rank Fusion (ranks only, never raw scores)
+  rerank           re-sort a fused shortlist with a cross-encoder that reads question and chunk together
 
 Every search takes `collection`: rungs that change the index text search a different collection of the same chunks.
 """
@@ -15,6 +16,7 @@ from dataclasses import dataclass, field
 from functools import cache
 
 from fastembed import SparseTextEmbedding, TextEmbedding
+from fastembed.rerank.cross_encoder import TextCrossEncoder
 from qdrant_client import QdrantClient, models
 
 from chunks import EMBED_MODEL
@@ -76,6 +78,23 @@ def sparse_search(question: str, k: int, using: str = BM25, collection: str = PL
         sp = next(_sparse(SPARSE_MODEL[using]).query_embed(question))
         query = models.SparseVector(indices=sp.indices.tolist(), values=sp.values.tolist())
         return _hits(_qdrant().query_points(collection, query=query, using=using, limit=k).points)
+
+
+@cache
+def _cross_encoder(model: str) -> TextCrossEncoder:
+    return TextCrossEncoder(model)
+
+
+def rerank(question: str, candidates: list[Hit], model: str, text_of=lambda h: h.text) -> list[Hit]:
+    """Re-sort candidates by a cross-encoder. Every retriever above turns the question and the chunk into vectors
+    SEPARATELY and compares them; a cross-encoder reads both as one input ("[CLS] question [SEP] chunk") and outputs
+    one relevance score, so it can see that a chunk tells HOW Rahane was out, not just that it mentions him. Too slow
+    for the whole corpus, fine over ~20 candidates. text_of: what it reads per chunk (the ladder adds the label)."""
+    with timed("rerank"):
+        scores = list(_cross_encoder(model).rerank(question, [text_of(h) for h in candidates], batch_size=8))
+        order = sorted(range(len(candidates)), key=lambda i: -scores[i])
+        return [Hit(candidates[i].chunk_id, candidates[i].doc_id, candidates[i].path, candidates[i].text, scores[i],
+                    candidates[i].ranks) for i in order]
 
 
 def rrf_fuse(ranked: dict[str, list[Hit]], k: int = 60, weights: dict[str, float] | None = None) -> list[Hit]:

@@ -123,14 +123,14 @@ def cost(usage: dict) -> float:
 def pilot_chunks() -> list[tuple[str, Chunk, list[Chunk]]]:
     """Per tune question: the chunk holding its evidence, and up to 3 chunks r2b ranks above it (its rivals)."""
     from ingest import collection
-    from ladder import CANDIDATES, TUNE, fragments, hybrid_stack, norm
+    from ladder import CANDIDATES, TUNE, fragments, holds, hybrid_stack
     by_id = {c.chunk_id: c for c in load_chunks()}
     picks = []
     for g in load_golden(TUNE):
         if g.question_type == "no_answer":
             continue
         frags = fragments(g)
-        answer = next(c for c in by_id.values() if c.doc_id == g.source_doc and any(f in norm(c.text) for f in frags))
+        answer = next(c for c in by_id.values() if c.doc_id == g.source_doc and any(holds(p, c.text) for p in frags))
         ranked = [h.chunk_id for h in hybrid_stack(g.question, CANDIDATES, collection("header_match"))]
         above = ranked[:ranked.index(answer.chunk_id)] if answer.chunk_id in ranked else ranked
         picks.append((g.id, answer, [by_id[i] for i in above[:3]]))
