@@ -1,0 +1,285 @@
+{
+  "r4j": {
+    "label": "r4h on the note index, dense with HyDE AND the question",
+    "correct": 0.917,
+    "faithfulness": 0.8095238095238095,
+    "recall5": 0.9107142857142857,
+    "false_refusal_rate": 0.0,
+    "cost_per_query_usd": 0.001272055,
+    "latency_p50_ms": 1633.7157915113494,
+    "judge_cost_usd": 0.0654,
+    "by_category": {
+      "bio": {
+        "correct": 1.0,
+        "faithfulness": 1.0,
+        "n": 3
+      },
+      "multi": {
+        "correct": 1.0,
+        "faithfulness": 0.875,
+        "n": 4
+      },
+      "none": {
+        "correct": 1.0,
+        "faithfulness": null,
+        "n": 2
+      },
+      "num": {
+        "correct": 1.0,
+        "faithfulness": 0.867,
+        "n": 5
+      },
+      "pron": {
+        "correct": 0.8,
+        "faithfulness": 0.767,
+        "n": 5
+      },
+      "twin": {
+        "correct": 0.8,
+        "faithfulness": 0.8,
+        "n": 5
+      },
+      "which": {
+        "correct": 0.917,
+        "faithfulness": 0.667,
+        "n": 6
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-01",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.5,
+        "refused": 0.0,
+        "answer": "In India's second innings of the first Test at Adelaide, Murali Vijay was out lbw for 99 runs [1]."
+      },
+      {
+        "id": "which-02",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Michael Carberry top-scored for England in their second innings with 43 runs, and England made a total of 166 runs in that innings [1]."
+      },
+      {
+        "id": "which-03",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.0,
+        "refused": 0.0,
+        "answer": "In England's second innings of the first Test of the 2023 Ashes at Edgbaston, Joe Root was stumped by wicketkeeper Alex Carey off the bowling of Nathan Lyon for a score of 46 runs [1]."
+      },
+      {
+        "id": "which-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2023 World Test Championship final at The Oval, Ajinkya Rahane was out for 89 runs, and he was caught by Cameron Green [2]."
+      },
+      {
+        "id": "which-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.5,
+        "refused": 0.0,
+        "answer": "Washington Sundar and Shardul Thakur added 123 runs together in India's first innings [1]."
+      },
+      {
+        "id": "which-06",
+        "correct": 0.5,
+        "evidence_recall": 0.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2011 Cricket World Cup final, MS Dhoni scored 91 runs and Gautam Gambhir scored 97 runs, so together they added 188 runs [1][2]."
+      },
+      {
+        "id": "twin-01",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Virat Kohli was run out for 74 runs in India's first innings of the day-night Adelaide Test in December 2020. He was stranded in the middle of the pitch after a mix-up with Ajinkya Rahane, leading to his dismissal by Lyon breaking the stumps [1]."
+      },
+      {
+        "id": "twin-02",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Cheteshwar Pujara top-scored for India in their first innings of the Adelaide Test of the 2018–19 series with a score of 123 runs off 246 balls [1]."
+      },
+      {
+        "id": "twin-03",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.0,
+        "refused": 0.0,
+        "answer": "In the 2017 IPL final, Jasprit Bumrah bowled Mumbai Indians' last over. Rising Pune Supergiant needed 11 runs from it [3]."
+      },
+      {
+        "id": "twin-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Ajinkya Rahane scored a century for India in the Boxing Day Test at the MCG in December 2020, ending his innings on 112 runs after being run out by Labuschagne combining with Tim Paine at the stumps [3]."
+      },
+      {
+        "id": "twin-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Carlos Brathwaite scored 101 runs for the West Indies against New Zealand at the 2019 Cricket World Cup [1]."
+      },
+      {
+        "id": "pron-01",
+        "correct": 0.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.5,
+        "refused": 0.0,
+        "answer": "Jofra Archer took five wickets for 45 runs when England were bowled out for 67 in the Headingley Test of the 2019 Ashes [1]."
+      },
+      {
+        "id": "pron-02",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the fifth Test at The Oval, MS Dhoni and Ishant Sharma put on a last-wicket partnership worth 58 runs in India's first innings [1]."
+      },
+      {
+        "id": "pron-03",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "At stumps on day two of the second Test of the 2013–14 Ashes in Adelaide, England's score was 1/35, and the wicket was taken by Mitchell Johnson, who claimed the wicket of Cook [1][2]."
+      },
+      {
+        "id": "pron-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "On the third morning of the December 2020 Adelaide Test, Jasprit Bumrah was caught and bowled by Pat Cummins for 2 runs [1]."
+      },
+      {
+        "id": "pron-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Australia set England a target of 509 runs in the Lord's Test of the 2015 Ashes [1]."
+      },
+      {
+        "id": "num-01",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Josh Hazlewood's bowling figures when India were bowled out for 36 at Adelaide in December 2020 were 5 wickets for 8 runs in 5 overs [1]."
+      },
+      {
+        "id": "num-02",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "Ben Stokes faced 219 balls for his unbeaten 135 in the Headingley Test of the 2019 Ashes [2]."
+      },
+      {
+        "id": "num-03",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "Jasprit Bumrah's bowling figures in Australia's first innings of the Boxing Day Test at the MCG in December 2018 were 6 wickets for 33 runs in 15.5 overs [1]."
+      },
+      {
+        "id": "num-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Mitchell Santner's bowling figures against the Netherlands at the 2023 Cricket World Cup in Hyderabad were 5 wickets for 59 runs in 10 overs [1]."
+      },
+      {
+        "id": "num-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Sunrisers Hyderabad made a total of 208 runs for 7 wickets in their innings while batting first in the 2016 IPL final [1]."
+      },
+      {
+        "id": "multi-01",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2023 Cricket World Cup final, Rohit Sharma scored 47 runs for India, while Travis Head made 137 runs in Australia's chase [1][2]."
+      },
+      {
+        "id": "multi-02",
+        "correct": 1.0,
+        "evidence_recall": 0.5,
+        "faithfulness": 0.5,
+        "refused": 0.0,
+        "answer": "In the Gabba Test of January 2021, India chased a target of 328 runs on the last day, and Shubman Gill scored 91 runs in the chase [1][2]."
+      },
+      {
+        "id": "multi-03",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "On the fourth day of the Headingley Test in the 2019 Ashes, Joe Root made 77 runs before being caught behind, and Jonny Bairstow scored 36 runs before he was also caught behind [1]."
+      },
+      {
+        "id": "multi-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Fakhar Zaman was reprieved by a no-ball when he had scored 3 runs, and he went on to make 114 runs in total [1]."
+      },
+      {
+        "id": "bio-01",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Jasprit Bumrah's first Test wicket was AB de Villiers, and he made his Test debut at Newlands in Cape Town on 5 January 2018 [1]."
+      },
+      {
+        "id": "bio-02",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Nathan Lyon's first Test wicket was Kumar Sangakkara, which he took on 1 September 2011 during his debut match against Sri Lanka at Galle [1]."
+      },
+      {
+        "id": "bio-03",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Perth Stadium was announced to host the first Test of the 2025–2026 Men's Ashes in October 2024, marking the first time it hosted an Ashes Test [1][3]."
+      },
+      {
+        "id": "none-01",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "none-02",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      }
+    ]
+  }
+}
