@@ -1,0 +1,599 @@
+{
+  "r0": {
+    "label": "dense only",
+    "correct": 0.6,
+    "faithfulness": 0.808974358974359,
+    "recall5": 0.5,
+    "false_refusal_rate": 0.2777777777777778,
+    "cost_per_query_usd": 0.000253545,
+    "latency_p50_ms": 1215.9744584932923,
+    "judge_cost_usd": 0.0406,
+    "by_category": {
+      "bio": {
+        "correct": 0.5,
+        "faithfulness": 1.0,
+        "n": 2
+      },
+      "multi": {
+        "correct": 0.833,
+        "faithfulness": 0.944,
+        "n": 3
+      },
+      "none": {
+        "correct": 1.0,
+        "faithfulness": null,
+        "n": 2
+      },
+      "num": {
+        "correct": 0.667,
+        "faithfulness": 1.0,
+        "n": 3
+      },
+      "pron": {
+        "correct": 0.333,
+        "faithfulness": 0.444,
+        "n": 3
+      },
+      "twin": {
+        "correct": 0.5,
+        "faithfulness": 0.875,
+        "n": 3
+      },
+      "which": {
+        "correct": 0.5,
+        "faithfulness": 0.8,
+        "n": 4
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-07",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "which-08",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "which-09",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Yusuf Pathan's bowling figures in the 2008 IPL final against Chennai Super Kings were 3 wickets for 22 runs in 4 overs [2]."
+      },
+      {
+        "id": "which-10",
+        "correct": 1.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.6,
+        "refused": 0.0,
+        "answer": "The fifth Test of India's 2021 tour of England, which was due to start on 10 September 2021, was postponed due to COVID-19 concerns. The ECB later announced that India would play a one-off Test match in 2022 to determine the outcome of the series, which was ultimately drawn 2–2 after England won the rescheduled match [5]."
+      },
+      {
+        "id": "twin-06",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "twin-07",
+        "correct": 1.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Virat Kohli scored 76 runs off 59 balls in the 2024 T20 World Cup final against South Africa [1]."
+      },
+      {
+        "id": "twin-08",
+        "correct": 0.5,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.75,
+        "refused": 0.0,
+        "answer": "Joe Root scored his first Test century in Australia during the second Test of the Ashes series at the Gabba, Brisbane, on 4 December 2025, where he made 100 runs [2]."
+      },
+      {
+        "id": "pron-06",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.3333333333333333,
+        "refused": 0.0,
+        "answer": "In the fourth Test of the 2013–14 Ashes at Melbourne, England's top scorer in the first innings was Stuart Broad, who made an unbeaten 30 runs. England's total in that innings was 179 runs [5]."
+      },
+      {
+        "id": "pron-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Australia's record-breaking 10th-wicket stand gave them a 65-run lead by the end of their first innings in the first Test of the 2013 Ashes at Trent Bridge [3]."
+      },
+      {
+        "id": "pron-08",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.0,
+        "refused": 0.0,
+        "answer": "In the first Test of the 2015 Ashes at Cardiff, the eighth-wicket pair that put on 72 for Australia was Mitchell Starc and Nathan Lyon. The stand was broken by England's bowler Stuart Broad, who dismissed Starc for 68 runs [1]."
+      },
+      {
+        "id": "num-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Mitchell Starc's bowling figures in England's first innings of the Perth Test in November 2025 were 7 wickets for 58 runs in 12.5 overs [2]."
+      },
+      {
+        "id": "num-07",
+        "correct": 0.0,
+        "evidence_recall": 1.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "num-08",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Gautam Gambhir scored 75 runs off 54 balls in the 2007 World Twenty20 final [5]."
+      },
+      {
+        "id": "multi-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2024 T20 World Cup final, India made a total of 176/7. Heinrich Klaasen top-scored for South Africa with 52 runs off 27 balls [1][2]."
+      },
+      {
+        "id": "multi-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2019 Cricket World Cup final, Martin Guptill was run out by Jason Roy and Jos Buttler on the last ball of the Super Over. England hit 26 boundaries, while New Zealand hit 17 boundaries [3]."
+      },
+      {
+        "id": "multi-07",
+        "correct": 0.5,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.8333333333333334,
+        "refused": 0.0,
+        "answer": "In the first Test of India's 2025 tour of England at Headingley, Rishabh Pant scored his 3,000th run in Tests, becoming the leading Asian wicketkeeper in SENA countries and the Indian wicketkeeper with the most Test centuries (7), surpassing MS Dhoni. Additionally, India's batters set a record by scoring 471 runs in their first innings, which was a significant contribution to the match [5]."
+      },
+      {
+        "id": "bio-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "The first ever day/night Test match was hosted by Adelaide Oval, where Australia played New Zealand on 27 November 2015 [3]."
+      },
+      {
+        "id": "bio-05",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "none-03",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "none-04",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      }
+    ]
+  },
+  "r1": {
+    "label": "Hybrid #1 best stack (+ HyDE on dense)",
+    "correct": 0.55,
+    "faithfulness": 0.8181818181818181,
+    "recall5": 0.5555555555555556,
+    "false_refusal_rate": 0.3888888888888889,
+    "cost_per_query_usd": 0.0003719925,
+    "latency_p50_ms": 3671.545021003112,
+    "judge_cost_usd": 0.0422,
+    "by_category": {
+      "bio": {
+        "correct": 0.5,
+        "faithfulness": 0.833,
+        "n": 2
+      },
+      "multi": {
+        "correct": 1.0,
+        "faithfulness": 0.889,
+        "n": 3
+      },
+      "none": {
+        "correct": 1.0,
+        "faithfulness": null,
+        "n": 2
+      },
+      "num": {
+        "correct": 0.667,
+        "faithfulness": 0.5,
+        "n": 3
+      },
+      "pron": {
+        "correct": 0.0,
+        "faithfulness": null,
+        "n": 3
+      },
+      "twin": {
+        "correct": 0.333,
+        "faithfulness": 0.833,
+        "n": 3
+      },
+      "which": {
+        "correct": 0.5,
+        "faithfulness": 1.0,
+        "n": 4
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-07",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "which-08",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "which-09",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Yusuf Pathan's bowling figures in the 2008 IPL final against Chennai Super Kings were 3 wickets for 22 runs in 4 overs [2]."
+      },
+      {
+        "id": "which-10",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "The fifth Test of India's 2021 tour of England, scheduled to start on 10 September 2021, was cancelled after both cricket boards confirmed that the match would not start due to positive COVID-19 results in the Indian team, making them unable to field a side [1]. Subsequently, the ECB announced that the match had been cancelled [4]."
+      },
+      {
+        "id": "twin-06",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "twin-07",
+        "correct": 1.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Virat Kohli scored 76 runs off 59 balls in the 2024 T20 World Cup final against South Africa [1]."
+      },
+      {
+        "id": "twin-08",
+        "correct": 0.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "Joe Root scored his first Test century in Australia on 4 December 2025, making 104 runs in the first innings of the second Test of the Ashes series at the Gabba, Brisbane [4]."
+      },
+      {
+        "id": "pron-06",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "pron-07",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "pron-08",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "num-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.0,
+        "refused": 0.0,
+        "answer": "Mitchell Starc's bowling figures in England's first innings of the Perth Test in November 2025 were 7 wickets for 58 runs in 12.5 overs [1]."
+      },
+      {
+        "id": "num-07",
+        "correct": 0.0,
+        "evidence_recall": 1.0,
+        "refused": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "num-08",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Gautam Gambhir scored 75 runs off 54 balls in the 2007 World Twenty20 final [2]."
+      },
+      {
+        "id": "multi-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "In the 2024 T20 World Cup final, India made a total of 176/7. Heinrich Klaasen top-scored for South Africa with 52 runs off 27 balls [1][2]."
+      },
+      {
+        "id": "multi-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Jos Buttler ran out Martin Guptill on the last ball of the Super Over. England hit 26 boundaries, while New Zealand hit 17 boundaries [1][3]."
+      },
+      {
+        "id": "multi-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the first Test of India's 2025 tour of England at Headingley, Rishabh Pant became the first Indian wicketkeeper to score centuries in both innings of a Test. Additionally, India's batters set a record by scoring five centuries in a single Test, marking the first occurrence of the losing team achieving this feat [1][5]."
+      },
+      {
+        "id": "bio-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "The first ever day/night Test match was hosted at the Adelaide Oval between Australia and New Zealand on 27 November 2015 [2]."
+      },
+      {
+        "id": "bio-05",
+        "correct": 0.0,
+        "evidence_recall": 0.0,
+        "faithfulness": 0.6666666666666666,
+        "refused": 0.0,
+        "answer": "Joe Root scored his maiden Test century at Lord's, making an unbeaten 200 runs off 298 balls against Sri Lanka in 2014 [3]."
+      },
+      {
+        "id": "none-03",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "none-04",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      }
+    ]
+  },
+  "r4j": {
+    "label": "r4h on the note index, dense with HyDE AND the question",
+    "correct": 0.95,
+    "faithfulness": 0.912037037037037,
+    "recall5": 1.0,
+    "false_refusal_rate": 0.0,
+    "cost_per_query_usd": 0.0012624824999999998,
+    "latency_p50_ms": 2458.6593545391224,
+    "judge_cost_usd": 0.0422,
+    "by_category": {
+      "bio": {
+        "correct": 1.0,
+        "faithfulness": 1.0,
+        "n": 2
+      },
+      "multi": {
+        "correct": 1.0,
+        "faithfulness": 1.0,
+        "n": 3
+      },
+      "none": {
+        "correct": 1.0,
+        "faithfulness": null,
+        "n": 2
+      },
+      "num": {
+        "correct": 1.0,
+        "faithfulness": 1.0,
+        "n": 3
+      },
+      "pron": {
+        "correct": 1.0,
+        "faithfulness": 0.778,
+        "n": 3
+      },
+      "twin": {
+        "correct": 0.667,
+        "faithfulness": 0.694,
+        "n": 3
+      },
+      "which": {
+        "correct": 1.0,
+        "faithfulness": 1.0,
+        "n": 4
+      }
+    },
+    "per_question": [
+      {
+        "id": "which-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2025 Champions Trophy final, India's opening partnership between Rohit Sharma and Shubman Gill was 105 runs [1]."
+      },
+      {
+        "id": "which-08",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2015 Cricket World Cup final, Kane Williamson was dismissed caught and bowled by Mitchell Johnson for 12 runs [2]."
+      },
+      {
+        "id": "which-09",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Yusuf Pathan's bowling figures in the 2008 IPL final against Chennai Super Kings were 3 wickets for 22 runs in 4 overs [2]."
+      },
+      {
+        "id": "which-10",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "The fifth Test of India's 2021 tour of England, scheduled to start on 10 September 2021, was cancelled due to positive COVID-19 results in the Indian team, which made them unable to field a side. The match was later rescheduled to be played in July 2022, where England won by seven wickets, drawing the series 2–2 [1][2]."
+      },
+      {
+        "id": "twin-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.3333333333333333,
+        "refused": 0.0,
+        "answer": "Travis Head scored 163 runs off 166 balls in Australia's first innings of the fifth Test of the 2025–26 Ashes at Sydney [1]."
+      },
+      {
+        "id": "twin-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Virat Kohli scored 76 runs off 59 balls in the 2024 T20 World Cup final against South Africa [1][3]."
+      },
+      {
+        "id": "twin-08",
+        "correct": 0.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.75,
+        "refused": 0.0,
+        "answer": "Joe Root scored his first Test century in Australia during the second Test of the Ashes series at the Gabba, Brisbane, on 4 December 2025, where he made 104 runs [2]."
+      },
+      {
+        "id": "pron-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the fourth Test of the 2013–14 Ashes at Melbourne, Kevin Pietersen top-scored in England's first innings with 71 runs, and England's total was 255 runs [1]."
+      },
+      {
+        "id": "pron-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Australia's record-breaking 10th-wicket stand gave them a 65-run lead by the end of their innings in the first Test of the 2013 Ashes at Trent Bridge [1]."
+      },
+      {
+        "id": "pron-08",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 0.3333333333333333,
+        "refused": 0.0,
+        "answer": "In the first Test of the 2015 Ashes at Cardiff, the eighth-wicket pair that put on 72 runs for Australia was Mitchell Johnson and Mitchell Starc. The stand was broken by Joe Root, who found both their edges to leave Australia at 169 with one wicket in hand [1]."
+      },
+      {
+        "id": "num-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Mitchell Starc's bowling figures in England's first innings of the Perth Test in November 2025 were 7 wickets for 58 runs in 12.5 overs [1]."
+      },
+      {
+        "id": "num-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Day one of the Boxing Day Test of the 2025–26 Ashes at the MCG had an attendance of 94,199, which is the largest single-day attendance in Test Cricket history [2][3]."
+      },
+      {
+        "id": "num-08",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Gautam Gambhir scored 75 runs off 54 balls in the 2007 World Twenty20 final [1]."
+      },
+      {
+        "id": "multi-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the 2024 T20 World Cup final, India made a total of 176 runs. Heinrich Klaasen top-scored for South Africa with 52 runs from 27 balls [1][3]."
+      },
+      {
+        "id": "multi-06",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Jos Buttler ran out Martin Guptill on the last ball of the Super Over. England hit 26 boundaries, while New Zealand hit 17 boundaries [1][4]."
+      },
+      {
+        "id": "multi-07",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "In the first Test of India's 2025 tour of England at Headingley, Rishabh Pant became the first Indian wicketkeeper to score centuries in both innings of a Test. Additionally, India's batters set a record by scoring five centuries in a single Test for the first time, which also marked the first occurrence of the losing team scoring five centuries in a Test [1][2]."
+      },
+      {
+        "id": "bio-04",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "The first ever day/night Test match was hosted at Adelaide Oval between Australia and New Zealand on 27 November 2015 [1]."
+      },
+      {
+        "id": "bio-05",
+        "correct": 1.0,
+        "evidence_recall": 1.0,
+        "faithfulness": 1.0,
+        "refused": 0.0,
+        "answer": "Joe Root scored his maiden Test century at Headingley, making 104 runs off 167 balls [3]."
+      },
+      {
+        "id": "none-03",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      },
+      {
+        "id": "none-04",
+        "correct": 1.0,
+        "answer": "I don't know based on the provided documents."
+      }
+    ]
+  }
+}

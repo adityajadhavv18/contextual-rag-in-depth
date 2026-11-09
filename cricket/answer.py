@@ -23,7 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from eval_harness import PipelineOutput, evaluate, load_golden, settings, traced_openai
-from eval_harness.metrics import cost_usd
+from eval_harness.metrics import cost_usd, is_refusal
 
 import hyde
 from ladder import RUNGS, TOP_K, TUNE, labelled
@@ -108,8 +108,8 @@ def main():
             g = golden[q.golden_id]
             if g.question_type == "no_answer":
                 correct = q.scores.get("abstention", 0.0)
-            elif q.output is None:
-                correct = 0.0
+            elif q.output is None or is_refusal(q.output.answer):
+                correct = 0.0  # the judge graded some refusals "correct" despite the prompt: decided in code
             else:
                 correct, cost = grade(g.question, g.ground_truth, q.output.answer)
                 judge_cost += cost
